@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahidoona Game Zone</title>
+  <!-- AdSense: Replace YOUR_ID with your AdSense publisher ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    canvas {
+      border: 2px solid #333;
+      margin: 20px auto;
+      display: block;
+      background: #eee;
+    }
+    .ad-container {
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Welcome to Sahidoona Game Zone!</h1>
+
+    <!-- Top Ad -->
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-YOUR_ID"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas" width="320" height="320"></canvas>
+
+    <!-- Bottom Ad -->
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-YOUR_ID"
+        data-ad-slot="0987654321"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let x = 50, y = 50, size = 30;
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowUp") y -= 10;
+      else if (e.key === "ArrowDown") y += 10;
+      else if (e.key === "ArrowLeft") x -= 10;
+      else if (e.key === "ArrowRight") x += 10;
+      draw();
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "red";
+      ctx.fillRect(x, y, size, size);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
