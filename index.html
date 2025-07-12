@@ -6,8 +6,7 @@
   <title>Sahidoona Game Zone</title>
 
   <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835470952853856"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835470952853856" crossorigin="anonymous"></script>
 
   <style>
     body {
@@ -28,6 +27,27 @@
     }
     .ad-container {
       margin: 20px auto;
+    }
+    #consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      font-size: 14px;
+      z-index: 9999;
+      text-align: center;
+    }
+    #consent-banner button {
+      margin-left: 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -61,6 +81,12 @@
     </div>
   </div>
 
+  <!-- Consent Banner -->
+  <div id="consent-banner">
+    <span>This website uses cookies and Google AdSense to deliver services and analyze traffic. By using this site, you agree to its use of cookies.</span>
+    <button onclick="acceptConsent()">Got it!</button>
+  </div>
+
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
@@ -81,6 +107,17 @@
     }
 
     draw();
+
+    function acceptConsent() {
+      document.getElementById('consent-banner').style.display = 'none';
+      localStorage.setItem('consentAccepted', 'true');
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem('consentAccepted') === 'true') {
+        document.getElementById('consent-banner').style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>
