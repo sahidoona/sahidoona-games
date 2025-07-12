@@ -107,18 +107,12 @@
     <button onclick="acceptConsent()">Got it!</button>
   </div>
 
+  <!-- Working Game Script -->
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
     let x = 50, y = 50, size = 30;
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowUp") y -= 10;
-      else if (e.key === "ArrowDown") y += 10;
-      else if (e.key === "ArrowLeft") x -= 10;
-      else if (e.key === "ArrowRight") x += 10;
-      draw();
-    });
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -127,6 +121,24 @@
     }
 
     draw();
+
+    document.addEventListener("keydown", function (e) {
+      switch (e.key) {
+        case "ArrowUp":
+          y = Math.max(0, y - 10);
+          break;
+        case "ArrowDown":
+          y = Math.min(canvas.height - size, y + 10);
+          break;
+        case "ArrowLeft":
+          x = Math.max(0, x - 10);
+          break;
+        case "ArrowRight":
+          x = Math.min(canvas.width - size, x + 10);
+          break;
+      }
+      draw();
+    });
 
     function acceptConsent() {
       document.getElementById('consent-banner').style.display = 'none';
