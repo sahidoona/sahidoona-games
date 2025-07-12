@@ -35,12 +35,6 @@
     .container {
       padding: 20px;
     }
-    canvas {
-      border: 2px solid #333;
-      margin: 20px auto;
-      display: block;
-      background: #eee;
-    }
     .ad-container {
       margin: 20px auto;
     }
@@ -86,8 +80,7 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Game Canvas -->
-    <canvas id="gameCanvas" width="320" height="320"></canvas>
+    <p>More content is coming soon — stay tuned!</p>
 
     <!-- Bottom Ad -->
     <div class="ad-container">
@@ -107,39 +100,7 @@
     <button onclick="acceptConsent()">Got it!</button>
   </div>
 
-  <!-- Working Game Script -->
   <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-
-    let x = 50, y = 50, size = 30;
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "red";
-      ctx.fillRect(x, y, size, size);
-    }
-
-    draw();
-
-    document.addEventListener("keydown", function (e) {
-      switch (e.key) {
-        case "ArrowUp":
-          y = Math.max(0, y - 10);
-          break;
-        case "ArrowDown":
-          y = Math.min(canvas.height - size, y + 10);
-          break;
-        case "ArrowLeft":
-          x = Math.max(0, x - 10);
-          break;
-        case "ArrowRight":
-          x = Math.min(canvas.width - size, x + 10);
-          break;
-      }
-      draw();
-    });
-
     function acceptConsent() {
       document.getElementById('consent-banner').style.display = 'none';
       localStorage.setItem('consentAccepted', 'true');
